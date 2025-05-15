@@ -1,23 +1,14 @@
 #include "Customer.h"
-#include <regex>
 
-using namespace std;
+// Constructor
+Customer::Customer(const string& id, const string& name, const string& email, const string& password)
+    : id(id), name(name), email(email), password(password) {}
 
-// constructor
-Customer::Customer(const string& name, const string& firstName, const string& email, const string& address, const string& notes)
-    : name(name), firstName(firstName), email(email), address(address), notes(notes), gdprDeleted(false) {}
-
-// GDPR ???
-void Customer::anonymize() {
-    name = "Customer";
-    firstName = "Unknown";
-    email = "";
-    address = "";
-    notes = "";
-    gdprDeleted = true;
+// Getters
+string Customer::getId() const {
+    return id;
 }
 
-// getter
 string Customer::getName() const {
     return name;
 }
@@ -26,17 +17,28 @@ string Customer::getEmail() const {
     return email;
 }
 
-// setters
-void Customer::setName(const string& name) {
-    this->name = name;
+string Customer::getPassword() const {
+    return password;
 }
 
-void Customer::setEmail(const string& email) {
-    this->email = email;
+// Set new password
+void Customer::setPassword(const string& newPassword) {
+    password = newPassword;
 }
 
-// validare
-bool Customer::isValidEmail(const string& email) {
-    const regex emailRegex(R"((\w+)(\.{0,1})(\w*)@(\w+)\.(\w+))");
-    return regex_match(email, emailRegex);
+// Serialize Customer to JSON
+string Customer::toJSON() const {
+    json j = {
+        {"id", id},
+        {"name", name},
+        {"email", email},
+        {"password", password}
+    };
+    return j.dump();
+}
+
+// Deserialize Customer from JSON
+Customer Customer::fromJSON(const string& jsonString) {
+    json j = json::parse(jsonString);
+    return Customer(j["id"], j["name"], j["email"], j["password"]);
 }

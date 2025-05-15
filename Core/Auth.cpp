@@ -1,4 +1,4 @@
-#include "Authenticator.h"
+#include "Auth.h"
 
 using namespace std;
 
@@ -7,7 +7,7 @@ void Authenticator::addUser(const User& user) {
     users.push_back(user);
 }
 
-// functie logn
+// functie login
 const User* Authenticator::login(const string& email, const string& password) const {
     for (const auto& user : users) {
         if (user.authenticate(email, password)) {
