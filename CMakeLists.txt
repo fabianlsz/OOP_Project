@@ -3,13 +3,13 @@ project(L5OOP)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(L5OOP main.cpp
+add_executable(L5OOP fullTest.cpp
 Customer.cpp
 Customer.h
 CustomerManager.cpp
 CustomerManager.h
-CustomerRepository.cpp
-CustomerRepository.h
+        Repository/CustomerRepository.cpp
+        Repository/CustomerRepository.h
 CustomerValidator.cpp
 CustomerValidator.h
 Employee.cpp
