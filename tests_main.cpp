@@ -3,7 +3,7 @@
 #include "StartDataB.h"
 #include "ProductValidator.h"
 
-extern void runTests();
+void runProductValidationTests();
 
 int main() {
     // A2: Authentifizierung
@@ -18,7 +18,7 @@ int main() {
 
     // T_P: Produktvalidierung testen
     std::cout << "\n=== Produkttests ===\n";
-    runTests();
+    runProductValidationTests();
 
     return 0;
 }

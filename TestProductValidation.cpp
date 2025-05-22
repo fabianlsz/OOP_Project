@@ -1,7 +1,7 @@
 #include "ProductValidator.h"
 #include <iostream>
 
-void runTests() {
+void runProductValidationTests() {
     try {
         ProductValidator::validate("P123", 10.0, 5);
         std::cout << "Test 1 passed\n";
