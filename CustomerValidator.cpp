@@ -4,10 +4,10 @@
 
 void CustomerValidator::validate(const Customer& c, const CustomerRepository& repo) {
     if (!c.gdprDeleted) {
-        if (c.name.empty() || c.vorname.empty() || c.email.empty() || c.adresse.empty())
+        if (c.name.empty() || c.firstName.empty() || c.email.empty() || c.address.empty()) // Updated
             throw std::runtime_error("Alle Felder außer 'Bemerkungen' müssen ausgefüllt sein, wenn der Kunde nicht anonymisiert ist.");
     } else {
-        if (c.name.empty() || c.vorname.empty())
+        if (c.name.empty() || c.firstName.empty()) // Updated
             throw std::runtime_error("Name und Vorname sind erforderlich, wenn der Kunde anonymisiert wurde (GDPR).");
     }
 

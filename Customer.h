@@ -6,16 +6,16 @@
 class Customer {
 public:
     std::string name;
-    std::string vorname;
+    std::string firstName; // Renamed from vorname
     std::string email;
-    std::string adresse;
+    std::string address;   // Renamed from adresse
     std::string bemerkungen;
     bool gdprDeleted;
 
     Customer(const std::string& name,
-             const std::string& vorname,
+             const std::string& firstName,
              const std::string& email,
-             const std::string& adresse,
+             const std::string& address,
              const std::string& bemerkungen,
              bool gdprDeleted = false);
 };

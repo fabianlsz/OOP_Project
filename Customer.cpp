@@ -1,10 +1,9 @@
 #include "Customer.h"
 
 Customer::Customer(const std::string& name,
-                   const std::string& vorname,
+                   const std::string& firstName,
                    const std::string& email,
-                   const std::string& adresse,
+                   const std::string& address,
                    const std::string& bemerkungen,
                    bool gdprDeleted)
-    : name(name), vorname(vorname), email(email), adresse(adresse),
-      bemerkungen(bemerkungen), gdprDeleted(gdprDeleted) {}
+    : name(name), firstName(firstName), email(email), address(address), bemerkungen(bemerkungen), gdprDeleted(gdprDeleted) {}

@@ -4,13 +4,15 @@ void CustomerRepository::addCustomer(const Customer& customer) {
     customers.push_back(customer);
 }
 
+#include "CustomerRepository.h"
+
 void CustomerRepository::anonymizeCustomer(const std::string& email) {
     for (auto& c : customers) {
         if (c.email == email) {
             c.name = "Kunde-" + email;
-            c.vorname = "Unbekannt";
+            c.firstName = "Unbekannt"; // Updated
             c.email = "";
-            c.adresse = "";
+            c.address = "";           // Updated
             c.bemerkungen = "";
             c.gdprDeleted = true;
         }
