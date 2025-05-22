@@ -12,6 +12,8 @@ private:
     string email;
     string address;
     string notes;
+    string password;
+    string id;
     bool gdprDeleted;
 
 public:
