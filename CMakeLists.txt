@@ -3,7 +3,7 @@ project(Lab5_OOP)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Lab5_OOP
+add_executable(tests
         Test_Autentificare.cpp
         Authentication.cpp
         ProductValidator.cpp
@@ -11,3 +11,12 @@ add_executable(Lab5_OOP
         TestProductValidation.cpp
         User.cpp
 )
+
+add_executable(OOP_Project
+        Core/Auth.cpp
+        Core/Auth.h
+        Core/Customer.cpp
+        Core/Customer.h
+        Core/User.cpp
+        Core/User.h
+        main.cpp)
