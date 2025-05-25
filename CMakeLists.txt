@@ -33,3 +33,19 @@ target_link_libraries(tests store_lib)
 add_executable(OOP_Project main.cpp)
 
 target_link_libraries(OOP_Project store_lib)
+
+#add_executable(L5OOP fullTest.cpp
+#Customer.cpp
+#Customer.h
+#CustomerManager.cpp
+#CustomerManager.h
+#        Repository/CustomerRepository.cpp
+#        Repository/CustomerRepository.h
+#CustomerValidator.cpp
+#CustomerValidator.h
+#Employee.cpp
+#Employee.h
+#StartDataMK.cpp
+#StartDataMK.h
+#UserActions.cpp
+#UserActions.h)

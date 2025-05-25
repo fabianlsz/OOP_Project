@@ -1,0 +1,35 @@
+#include <iostream>
+#include "CustomerRepository.h"
+#include "CustomerManager.h"
+#include "CustomerValidator.h"
+#include "UserActions.h"
+#include "StartDataMK.h"
+int main() {
+    CustomerRepository custRepo;
+    // Startdaten (S_MK): Beispielkunden hinzufügen
+    StartDataMK::initCustomers(custRepo);
+    // K1 + K5: Neuer Kunde mit Validierung hinzufügen
+    Customer newCustomer("Müller", "Lisa", "lisa@example.com", "Bahnhofstr. 9", "", false);
+    CustomerManager manager(custRepo);
+    std::cout << "=== Kunde hinzufügen ===\n";
+    try {
+        CustomerValidator::validate(newCustomer, custRepo);
+        manager.createCustomer(newCustomer);
+        std::cout << "Kunde erfolgreich hinzugefügt.\n";
+    } catch (const std::exception& e) {
+        std::cerr << "Fehler bei Validierung: " << e.what() << "\n";
+    }
+    // K2: Kunde anonymisieren
+    std::cout << "\n=== Kunde anonymisieren ===\n";
+    manager.anonymizeCustomer("tom.schulz@example.com");
+    for (const auto& c : custRepo.getAll()) {
+        std::cout << "Kunde: " << c.vorname << " " << c.name
+ << " | E-Mail: " << c.email
+ << " | GDPR: " << (c.gdprDeleted ? "Ja" : "Nein") << "\n";
+    }
+    // A3: Benutzeraktionen anzeigen
+    std::cout << "\n=== Benutzeraktionen ===\n";
+    std::cout << "Kunde darf: " << UserActions::getAvailableActionsForRole("Kunde") << "\n";
+    std::cout << "Mitarbeiter darf: " << UserActions::getAvailableActionsForRole("Mitarbeiter") << "\n";
+    return 0;
+}
