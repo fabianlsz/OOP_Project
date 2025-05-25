@@ -3,3 +3,8 @@
 //
 
 #include "EmployeeUI.h"
+
+void EmployeeUI::handleAddProduct() {};
+void EmployeeUI::showMenu() {};
+void EmployeeUI::run() {};
+void EmployeeUI::handleSelectOrder(){};
