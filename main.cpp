@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Controller/AuthenticationController.h"
+#include "Controller/CustomerManager.h"
 #include "Repository/Repository.h"
 #include "UI/EmployeeUI.h"
 
@@ -9,13 +10,13 @@ void showMenuForUserType(UserType userType) {
 }
 
 int main() {
-    Repository<Customer> customerRepo;
-    customerRepo.add({"Pop", "Ionut", "ionut.pop@secret.com", "x", "adresa", "y"});
+    CustomerRepository customerRepo;
+    customerRepo.addCustomer({"Pop", "Ionut", "ionut.pop@secret.com", "x", "adresa", "y"});
     AuthenticationController authController(customerRepo);
     // TODO
-    // CustomerController customerController(customerRepo);
+    CustomerManager customerController(customerRepo);
     //
-    // EmployeeUI employeeUI(customerController);
+    EmployeeUI employeeUI(customerController);
 
     // Simulate user login
     string email, password;
@@ -26,7 +27,7 @@ int main() {
 
     const User* user = authController.login(email, password);
     if (user->getUserType() == UserType::EMPLOYEE) {
-        // employeeUI.handleEmployeeUI();
+        employeeUI.run();
         cout << "1. Manage Orders\n";
         cout << "2. Manage Products\n";
     } else if (user->getUserType() == UserType::CUSTOMER) {

@@ -5,13 +5,14 @@
 #ifndef EMPLOYEEUI_H
 #define EMPLOYEEUI_H
 
-class CustomerController;
+class CustomerManager;
 
 class EmployeeUI {
-    CustomerController& customerController;
+    CustomerManager& customerManager;
     public:
-    explicit EmployeeUI(CustomerController& customerController);
+    explicit EmployeeUI(CustomerManager& customerManager): customerManager(customerManager) {};
     void showMenu();
+    void run();
 
     void handleAddProduct();
     void handleSelectOrder();

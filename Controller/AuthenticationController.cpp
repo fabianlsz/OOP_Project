@@ -5,7 +5,7 @@ using namespace std;
 
 // functie login
 const User* AuthenticationController::login(const string& email, const string& password) const {
-    for (const auto& user : customerRepo.getData()) {
+    for (const auto& user : customerRepo.getAll()) {
         if (user.authenticate(email, password)) {
             return &user;
         }

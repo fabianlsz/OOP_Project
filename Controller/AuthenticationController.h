@@ -2,7 +2,7 @@
 #define AUTHENTICATOR_H
 
 #include "../Domain/User.h"
-#include "../Repository/Repository.h"
+#include "../Repository/CustomerRepository.h"
 #include "../Domain/Customer.h"
 #include <vector>
 
@@ -11,11 +11,11 @@ using namespace std;
 class AuthenticationController {
 private:
     // TODO use CustomerRepository
-    Repository<Customer>& customerRepo;
+    CustomerRepository& customerRepo;
     // TODO also look in EmployeeRepository
 
 public:
-    explicit AuthenticationController(Repository<Customer>& customerRepo): customerRepo(customerRepo) {}
+    explicit AuthenticationController(CustomerRepository& customerRepo): customerRepo(customerRepo) {}
     // login function
     const User* login(const string& email, const string& password) const;
 };
