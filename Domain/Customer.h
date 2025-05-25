@@ -33,13 +33,13 @@ public:
 
     string getEmail() const;
 
-    string getAddress() {return address;} const;
+    string getAddress() const {return address;}
     // Setters
     void setName(const string &name);
 
     void setEmail(const string &email);
 
-    bool isGdprDeleted() {return gdprDeleted;} const;
+    bool isGdprDeleted() const {return gdprDeleted;}
 
     // Validation
     static bool isValidEmail(const string &email);

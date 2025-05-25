@@ -1,8 +1,8 @@
 #include "StartDataMK.h"
 
 void StartDataMK::initCustomers(CustomerRepository& repo) {
-    repo.addCustomer(Customer("Meier", "Laura", "laura.meier@example.com", "Hauptstr. 5", "Stammkunde", false));
-    repo.addCustomer(Customer("Schulz", "Tom", "tom.schulz@example.com", "Nebenweg 8", "", false));
+    repo.addCustomer(Customer("Meier", "Laura", "laura.meier@example.com", "pwd", "Hauptstr. 5", "Stammkunde"));
+    repo.addCustomer(Customer("Schulz", "Tom", "tom.schulz@example.com", "pwd", "Nebenweg 8", ""));
 }
 
 std::vector<Employee> StartDataMK::initEmployees() {

@@ -1,7 +1,7 @@
 #ifndef CUSTOMERMANAGER_H
 #define CUSTOMERMANAGER_H
 
-#include "CustomerRepository.h"
+#include "../Repository/CustomerRepository.h"
 
 class CustomerManager {
 private:

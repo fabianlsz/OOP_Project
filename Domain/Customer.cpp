@@ -15,3 +15,13 @@ string Customer::getName() const {
 string Customer::getEmail() const {
     return email;
 }
+
+void Customer::anonymize() {
+    // TODO adapt this to the english fields
+    // c.name = "Kunde-" + email;
+    // c.vorname = "Unbekannt";
+    // c.email = "";
+    // c.adresse = "";
+    // c.bemerkungen = "";
+    // c.gdprDeleted = true;
+}

@@ -7,8 +7,14 @@ add_library(store_lib
         Controller/AuthenticationController.cpp
         Controller/CustomerController.cpp
         Controller/CustomerController.h
+        Controller/CustomerManager.cpp
+        Controller/CustomerManager.h
         Controller/OrderService.cpp
         Controller/OrderService.h
+        Controller/CustomerValidator.cpp
+        Controller/CustomerValidator.h
+        Controller/UserActions.cpp
+        Controller/UserActions.h
         Domain/Customer.cpp
         Domain/Customer.h
         Domain/User.cpp
@@ -19,8 +25,14 @@ add_library(store_lib
         Domain/Product.h
         Domain/Order.cpp
         Domain/Order.h
+        Domain/Employee.cpp
+        Domain/Employee.h
         Repository/StartDataB.cpp
         Repository/StartDataB.h
+        Repository/CustomerRepository.cpp
+        Repository/CustomerRepository.h
+        Repository/StartDataMK.cpp
+        Repository/StartDataMK.h
 )
 
 add_executable(tests
@@ -35,18 +47,3 @@ add_executable(OOP_Project main.cpp)
 
 target_link_libraries(OOP_Project store_lib)
 
-#add_executable(L5OOP teste_cezar.cpp
-#Customer.cpp
-#Customer.h
-#CustomerManager.cpp
-#CustomerManager.h
-#        Repository/CustomerRepository.cpp
-#        Repository/CustomerRepository.h
-#CustomerValidator.cpp
-#CustomerValidator.h
-#Employee.cpp
-#Employee.h
-#StartDataMK.cpp
-#StartDataMK.h
-#UserActions.cpp
-#UserActions.h)
