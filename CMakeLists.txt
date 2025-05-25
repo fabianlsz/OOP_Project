@@ -27,6 +27,7 @@ add_executable(tests
         Tests/tests_main.cpp
         Tests/TestProductValidation.cpp
         Tests/AuthTests.cpp
+        Tests/teste_cezar.cpp
 )
 target_link_libraries(tests store_lib)
 
@@ -34,7 +35,7 @@ add_executable(OOP_Project main.cpp)
 
 target_link_libraries(OOP_Project store_lib)
 
-#add_executable(L5OOP fullTest.cpp
+#add_executable(L5OOP teste_cezar.cpp
 #Customer.cpp
 #Customer.h
 #CustomerManager.cpp

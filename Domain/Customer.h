@@ -29,12 +29,17 @@ public:
     // Getters
     string getName() const;
 
+    string getFirstName() const { return firstName;}
+
     string getEmail() const;
 
+    string getAddress() {return address;} const;
     // Setters
     void setName(const string &name);
 
     void setEmail(const string &email);
+
+    bool isGdprDeleted() {return gdprDeleted;} const;
 
     // Validation
     static bool isValidEmail(const string &email);

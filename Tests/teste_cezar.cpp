@@ -4,7 +4,8 @@
 #include "CustomerValidator.h"
 #include "UserActions.h"
 #include "StartDataMK.h"
-int main() {
+
+void teste_cezar() {
     CustomerRepository custRepo;
     // Startdaten (S_MK): Beispielkunden hinzufügen
     StartDataMK::initCustomers(custRepo);
@@ -31,5 +32,4 @@ int main() {
     std::cout << "\n=== Benutzeraktionen ===\n";
     std::cout << "Kunde darf: " << UserActions::getAvailableActionsForRole("Kunde") << "\n";
     std::cout << "Mitarbeiter darf: " << UserActions::getAvailableActionsForRole("Mitarbeiter") << "\n";
-    return 0;
 }

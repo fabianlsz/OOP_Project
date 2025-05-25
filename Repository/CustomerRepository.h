@@ -1,7 +1,7 @@
 #ifndef CUSTOMERREPOSITORY_H
 #define CUSTOMERREPOSITORY_H
 
-#include "Customer.h"
+#include "../Domain/Customer.h"
 #include <vector>
 #include <optional>
 

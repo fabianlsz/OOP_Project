@@ -1,8 +1,8 @@
 #ifndef CUSTOMERVALIDATOR_H
 #define CUSTOMERVALIDATOR_H
 
-#include "Customer.h"
-#include "CustomerRepository.h"
+#include "../Domain/Customer.h"
+#include "../Repository/CustomerRepository.h"
 #include <string>
 
 class CustomerValidator {
