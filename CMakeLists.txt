@@ -9,15 +9,15 @@ add_library(store_lib   Core/Auth.cpp
         Core/Customer.h
         Core/User.cpp
         Core/User.h
-        Authentication.cpp
-        ProductValidator.cpp
-        StartDataB.cpp
-        User.cpp
+        Authentificator_Product_User/Authentication.cpp
+        Authentificator_Product_User/ProductValidator.cpp
+        Authentificator_Product_User/StartDataB.cpp
+        Authentificator_Product_User/User.cpp
 )
 
 add_executable(tests
-        tests_main.cpp
-        TestProductValidation.cpp
+        Tests/tests_main.cpp
+        Tests/TestProductValidation.cpp
 )
 target_link_libraries(tests store_lib)
 
