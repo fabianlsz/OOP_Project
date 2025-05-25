@@ -2,7 +2,7 @@
 #include <vector>
 #include "../Domain/Customer.h"
 #include "../Domain/Order.h"
-
+// TODO: merge this class with CustomerManager
 class CustomerController {
     std::vector<Customer> customers;
     std::vector<Order> orders;
