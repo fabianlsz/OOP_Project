@@ -1,5 +1,6 @@
 #include <iostream>
-#include "Services/AuthenticationService.h"
+#include "Controller/AuthenticationController.h"
+#include "Repository/Repository.h"
 
 using namespace std;
 
@@ -14,8 +15,9 @@ void showMenuForUserType(UserType userType) {
 }
 
 int main() {
-    UserRepository userRepo("data/users.json");
-    AuthenticationService authService(userRepo);
+    Repository<Customer> customerRepo;
+    customerRepo.add({"Pop", "Ionut", "ionut.pop@secret.com", "x", "y"});
+    AuthenticationController authController(customerRepo);
 
     // Simulate user login
     string email, password;
@@ -24,7 +26,7 @@ int main() {
     cout << "Enter password: ";
     cin >> password;
 
-    const User* user = authService.authenticate(email, password);
+    const User* user = authController.login(email, password);
     if (user) {
         cout << "Login successful!\n";
         showMenuForUserType(user->getUserType());

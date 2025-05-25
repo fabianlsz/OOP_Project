@@ -1,4 +1,4 @@
-#include "C:\Users\oli\CLionProjects\OOPLab_712_1\Lab5_OOP_fixed\Lab5_OOP\Authentificator_Product_User/ProductValidator.h"
+#include "../Authentificator_Product_User/ProductValidator.h"
 #include <iostream>
 
 void runProductValidationTests() {
