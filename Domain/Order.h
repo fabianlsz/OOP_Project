@@ -1,10 +1,15 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 using namespace std;
 
+enum OrderStatus {
+  // TODO
+};
+
 struct ProductQuantity{
-  sting productId;
+  std::string productId;
   int quantity;
 };
 
@@ -24,11 +29,13 @@ class Order{
   double getTotalPrice() const { return totalPrice; }
   void setStatus(OrderStatus newStatus) { status = newStatus; }
   void setProducts(const std::vector<ProductQuantity>& newProducts, double newTotal) {
-    products = newProducts; totalAmount = newTotal;
+    //TODO
+    // products = newProducts; totalAmount = newTotal;
   }
   void print() const{
     cout <<"Order Number: " << orderNumber << endl;
-    cout << "Status: " << (status == OrderStatus::Reservation ? "Reservation" : status == OrderStatus::Confirmed ? "Confirmed" : "Completed") << endl;
+    // TODO
+    // cout << "Status: " << (status == OrderStatus::Reservation ? "Reservation" : status == OrderStatus::Confirmed ? "Confirmed" : "Completed") << endl;
     cout << "Customer " << customerId << endl;
     cout<< "Toatal Price: " << totalPrice << endl;
     cout << "Products: " << endl;

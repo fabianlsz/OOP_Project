@@ -5,15 +5,22 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_library(store_lib
         Controller/AuthenticationController.cpp
-        Controller/AuthenticationController.h
+        Controller/CustomerController.cpp
+        Controller/CustomerController.h
+        Controller/OrderService.cpp
+        Controller/OrderService.h
         Domain/Customer.cpp
         Domain/Customer.h
         Domain/User.cpp
         Domain/User.h
-        Authentificator_Product_User/Authentication.cpp
-        Authentificator_Product_User/ProductValidator.cpp
-        Authentificator_Product_User/StartDataB.cpp
-        Authentificator_Product_User/User.cpp
+        Domain/ProductValidator.cpp
+        Domain/ProductValidator.h
+        Domain/Product.cpp
+        Domain/Product.h
+        Domain/Order.cpp
+        Domain/Order.h
+        Repository/StartDataB.cpp
+        Repository/StartDataB.h
 )
 
 add_executable(tests

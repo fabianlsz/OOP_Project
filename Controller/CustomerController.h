@@ -3,11 +3,11 @@
 #include "../Domain/Customer.h"
 #include "../Domain/Order.h"
 
-class CustomerManager {
+class CustomerController {
     std::vector<Customer> customers;
     std::vector<Order> orders;
 public:
-    CustomerManager(const std::vector<Customer>& customers, const std::vector<Order>& orders);
+    CustomerController(const std::vector<Customer>& customers, const std::vector<Order>& orders);
 
     std::vector<Customer> getAllCustomersSorted() const;
 
