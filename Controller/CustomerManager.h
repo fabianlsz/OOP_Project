@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
-#include "Customer.h"
-#include "Order.h"
+#include "../Domain/Customer.h"
+#include "../Domain/Order.h"
 
 class CustomerManager {
     std::vector<Customer> customers;

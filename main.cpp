@@ -16,7 +16,7 @@ void showMenuForUserType(UserType userType) {
 
 int main() {
     Repository<Customer> customerRepo;
-    customerRepo.add({"Pop", "Ionut", "ionut.pop@secret.com", "x", "y"});
+    customerRepo.add({"Pop", "Ionut", "ionut.pop@secret.com", "x", "adresa", "y"});
     AuthenticationController authController(customerRepo);
 
     // Simulate user login
