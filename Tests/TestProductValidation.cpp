@@ -1,4 +1,4 @@
-#include "../Domain/ProductValidator.h"
+#include "../Controller/ProductValidator.h"
 #include <iostream>
 
 void runProductValidationTests() {

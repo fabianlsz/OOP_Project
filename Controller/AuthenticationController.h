@@ -10,7 +10,9 @@ using namespace std;
 
 class AuthenticationController {
 private:
+    // TODO use CustomerRepository
     Repository<Customer>& customerRepo;
+    // TODO also look in EmployeeRepository
 
 public:
     explicit AuthenticationController(Repository<Customer>& customerRepo): customerRepo(customerRepo) {}

@@ -4,6 +4,7 @@
 CustomerManager::CustomerManager(CustomerRepository& repository) : repo(repository) {}
 
 void CustomerManager::createCustomer(const Customer& customer) {
+    // TODO validate using Customer validation
     repo.addCustomer(customer);
 }
 

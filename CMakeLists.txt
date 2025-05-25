@@ -19,8 +19,8 @@ add_library(store_lib
         Domain/Customer.h
         Domain/User.cpp
         Domain/User.h
-        Domain/ProductValidator.cpp
-        Domain/ProductValidator.h
+        Controller/ProductValidator.cpp
+        Controller/ProductValidator.h
         Domain/Product.cpp
         Domain/Product.h
         Domain/Order.cpp
