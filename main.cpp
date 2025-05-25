@@ -12,9 +12,10 @@ int main() {
     Repository<Customer> customerRepo;
     customerRepo.add({"Pop", "Ionut", "ionut.pop@secret.com", "x", "adresa", "y"});
     AuthenticationController authController(customerRepo);
-    CustomerController customerController(customerRepo);
-
-    EmployeeUI employeeUI(customerController);
+    // TODO
+    // CustomerController customerController(customerRepo);
+    //
+    // EmployeeUI employeeUI(customerController);
 
     // Simulate user login
     string email, password;
