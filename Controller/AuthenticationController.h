@@ -18,7 +18,7 @@ private:
     EmployeeRepository& employeeRepo;
 
 public:
-    explicit AuthenticationController(CustomerRepository& customerRepo): customerRepo(customerRepo), employeeRepo(employeeRepo) {}
+    explicit AuthenticationController(CustomerRepository& customerRepo, EmployeeRepository& employeeRepo): customerRepo(customerRepo), employeeRepo(employeeRepo) {}
     // login function
     const User* login(const string& email, const string& password) const;
 };
