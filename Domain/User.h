@@ -12,7 +12,7 @@ enum class UserType {
 };
 
 class User {
-private:
+protected:
     string email;
     string password;
     UserType userType;

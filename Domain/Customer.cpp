@@ -3,7 +3,7 @@
 // Constructor
 Customer::Customer(const string &name, const string &firstname, const string &email, const string &password,
                    const string &address, const string &notes)
-    : User(email, password, UserType::CUSTOMER), firstName(firstname), name(name), email(email), password(password),
+    : User(email, password, UserType::CUSTOMER), firstName(firstname), name(name), email(email),
       notes(notes), address(address) {
 }
 

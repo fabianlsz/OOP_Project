@@ -14,7 +14,7 @@ private:
     string email;
     string address;
     string notes;
-    string password; //TODO remove password field already inherited from User
+    //string password; //TODO remove password field already inherited from User
     string id;
     bool gdprDeleted;
 
