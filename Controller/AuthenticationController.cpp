@@ -1,14 +1,24 @@
 #include "AuthenticationController.h"
-#include <memory>
+#include "../Domain/User.h"
 
-using namespace std;
-
-// functie login
-const User* AuthenticationController::login(const string& email, const string& password) const {
-    for (const auto& user : customerRepo.getAll()) {
-        if (user.authenticate(email, password)) {
-            return &user;
+const User* AuthenticationController::login(const std::string& email, const std::string& password) const {
+    // Check customers
+    auto customerOpt = customerRepo.findByEmail(email);
+    if (customerOpt.has_value()) {
+        const Customer& customer = customerOpt.value();
+        if (customer.authenticate(email, password)) {
+            return &customer;
         }
     }
-    return nullptr; // null daca auth fails
+
+    // Check employees
+    auto employeeOpt = employeeRepo.findByEmail(email);
+    if (employeeOpt.has_value()) {
+        const Employee& employee = employeeOpt.value();
+        if (employee.authenticate(email, password)) {
+            return &employee;
+        }
+    }
+
+    return nullptr; // Login failed
 }

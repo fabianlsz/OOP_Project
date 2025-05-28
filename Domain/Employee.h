@@ -2,8 +2,9 @@
 #define EMPLOYEE_H
 
 #include <string>
+#include "User.h"
 
-class Employee {
+class Employee : public User {
 public:
     std::string name;
     std::string vorname;

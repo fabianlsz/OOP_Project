@@ -18,12 +18,12 @@ void teste_cezar() {
         manager.createCustomer(newCustomer);
         std::cout << "Kunde erfolgreich hinzugefügt.\n";
     } catch (const std::exception& e) {
+    for (const auto& c : custRepo.getAll()) {
         std::cerr << "Fehler bei Validierung: " << e.what() << "\n";
     }
     // K2: Kunde anonymisieren
     std::cout << "\n=== Kunde anonymisieren ===\n";
     manager.anonymizeCustomer("tom.schulz@example.com");
-    for (const auto& c : custRepo.getAll()) {
         std::cout << "Kunde: " << c.getFirstName() << " " << c.getName()
  << " | E-Mail: " << c.getEmail()
  << " | GDPR: " << (c.isGdprDeleted() ? "Ja" : "Nein") << "\n";
