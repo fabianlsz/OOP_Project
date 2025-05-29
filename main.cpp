@@ -1,44 +1,43 @@
 #include <iostream>
 #include "Controller/AuthenticationController.h"
 #include "Controller/CustomerManager.h"
-#include "Repository/Repository.h"
+#include "Controller/OrderService.h"
+#include "Repository/CustomerRepository.h"
+#include "Repository/StartDataMK.h"
 #include "UI/EmployeeUI.h"
-
-using namespace std;
-
-void showMenuForUserType(UserType userType) {
-}
+#include "UI/CustomerUI.h"
+#include "Domain/User.h"
 
 int main() {
     CustomerRepository customerRepo;
-    customerRepo.addCustomer({"Pop", "Ionut", "ionut.pop@secret.com", "x", "adresa", "y"});
-    AuthenticationController authController(customerRepo);
-    // TODO
-    CustomerManager customerController(customerRepo);
-    //
-    EmployeeUI employeeUI(customerController);
+    StartDataMK::initCustomers(customerRepo);
+    std::vector<Customer> customers = customerRepo.getAll();
+    std::vector<Product> products;
 
-    // Simulate user login
-    string email, password;
-    cout << "Enter email: ";
-    cin >> email;
-    cout << "Enter password: ";
-    cin >> password;
+    OrderService orderService(products, customers);
+    AuthenticationController authController(customerRepo);
+
+    std::string email, password;
+    std::cout << "Enter email: ";
+    std::cin >> email;
+    std::cout << "Enter password: ";
+    std::cin >> password;
 
     const User* user = authController.login(email, password);
-    if (user->getUserType() == UserType::EMPLOYEE) {
-        employeeUI.run();
-        cout << "1. Manage Orders\n";
-        cout << "2. Manage Products\n";
-    } else if (user->getUserType() == UserType::CUSTOMER) {
-        cout << "1. View Products\n";
-        cout << "2. Place Order\n";
+    if (!user) {
+        std::cout << "Invalid credentials!\n";
+        return 1;
     }
-    if (user) {
-        cout << "Login successful!\n";
-        showMenuForUserType(user->getUserType());
+
+    std::cout << "Login successful!\n";
+    if (user->getUserType() == UserType::EMPLOYEE) {
+        EmployeeUI employeeUI(orderService, *user);
+        employeeUI.run();
+    } else if (user->getUserType() == UserType::CUSTOMER) {
+        CustomerUI customerUI(orderService, *user);
+        customerUI.showMenu();
     } else {
-        cout << "Invalid credentials!\n";
+        std::cout << "Unknown user type.\n";
     }
 
     return 0;

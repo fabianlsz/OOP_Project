@@ -1,5 +1,6 @@
 #include "OrderService.h"
 #include <stdexcept>
+#include <algorithm>
 
 static std::string orderStatusToString(OrderStatus status) {
     switch (status) {
@@ -96,5 +97,43 @@ bool OrderService::isOrderNumberUnique(const std::string& orderNumber) const {
         if (ord.getOrderNumber() == orderNumber)
             return false;
     }
+    return true;
+}
+
+double OrderService_calculateTotal(const std::vector<ProductQuantity>& products, const std::vector<Product>& allProducts) {
+    double total = 0.0;
+    for (const auto& pq : products) {
+        auto it = std::find_if(allProducts.begin(), allProducts.end(),
+            [&](const Product& p) { return p.getId() == pq.productId; });
+        if (it != allProducts.end())
+            total += it->getPrice() * pq.quantity;
+    }
+    return total;
+}
+
+bool OrderService::createReservation(const User& user, const std::vector<ProductQuantity>& products) {
+    double total = OrderService_calculateTotal(products, this->products);
+    std::string orderNumber = std::to_string(orderNumberCounter++);
+    orders.emplace_back(orderNumber, orderStatusToString(OrderStatus::Reservation), products, user.getEmail(), total, OrderStatus::Reservation);
+    std::cout << "Reservation created. Order number: " << orderNumber << "\n";
+    return true;
+}
+
+bool OrderService::adoptOrder(const User& user, const std::string& orderNumber) {
+    auto it = std::find_if(orders.begin(), orders.end(),
+        [&](const Order& o) { return o.getOrderNumber() == orderNumber; });
+    if (it != orders.end()) {
+        std::cout << "Employee " << user.getEmail() << " adopted order " << orderNumber << "\n";
+        return true;
+    }
+    std::cout << "Order not found.\n";
+    return false;
+}
+
+bool OrderService::createOrConfirmOrder(const User& user, const std::vector<ProductQuantity>& products, const std::string& customerId) {
+    double total = OrderService_calculateTotal(products, this->products);
+    std::string orderNumber = std::to_string(orderNumberCounter++);
+    orders.emplace_back(orderNumber, orderStatusToString(OrderStatus::Confirmed), products, customerId, total, OrderStatus::Confirmed);
+    std::cout << "Order confirmed. Order number: " << orderNumber << "\n";
     return true;
 }

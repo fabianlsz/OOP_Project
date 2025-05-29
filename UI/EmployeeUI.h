@@ -1,23 +1,21 @@
-//
-// Created by ion on 5/25/25.
-//
+#pragma once
 
-#ifndef EMPLOYEEUI_H
-#define EMPLOYEEUI_H
-
-class CustomerManager;
+#include "../Controller/OrderService.h"
+#include "../Domain/User.h"
 
 class EmployeeUI {
-    CustomerManager& customerManager;
-    public:
-    explicit EmployeeUI(CustomerManager& customerManager): customerManager(customerManager) {};
-    void showMenu();
+    OrderService& orderService;
+    const User& currentUser;
+
+public:
+    EmployeeUI(OrderService& service, const User& user);
+
     void run();
-
-    void handleAddProduct();
-    void handleSelectOrder();
+    static void showMenu();
+    void handleManageOrders();
+    void handleConfirmOrder();
+    void handleUpdateOrder();
+    void handleSetOrderCompleted();
+    void handleAdoptOrder();
+    void handleViewAllOrders();
 };
-
-
-
-#endif //EMPLOYEEUI_H

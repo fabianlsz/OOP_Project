@@ -45,7 +45,10 @@ target_link_libraries(tests store_lib)
 
 add_executable(OOP_Project main.cpp
         UI/EmployeeUI.cpp
-        UI/EmployeeUI.h)
+        UI/EmployeeUI.h
+        UI/CustomerUI.cpp
+        UI/CustomerUI.h)
+
 
 target_link_libraries(OOP_Project store_lib)
 

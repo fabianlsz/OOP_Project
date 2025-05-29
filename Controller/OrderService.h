@@ -48,4 +48,10 @@ public:
 
     // Utility: Check order number uniqueness
     bool isOrderNumberUnique(const std::string& orderNumber) const;
+
+    bool createReservation(const User& user, const std::vector<ProductQuantity>& products);
+
+    bool adoptOrder(const User& user, const std::string& orderNumber);
+
+    bool createOrConfirmOrder(const User& user, const std::vector<ProductQuantity>& products, const std::string& customerId);
 };
