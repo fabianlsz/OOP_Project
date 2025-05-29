@@ -1,48 +1,47 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-#include <string>
-
 #include "User.h"
-
-using namespace std;
+#include <vector>
 
 class Customer : public User {
 private:
-    string name;
-    string firstName;
-    string email;
-    string address;
-    string notes;
-    string password; //TODO remove password field already inherited from User
-    string id;
+    std::string name;
+    std::string firstName;
+    std::string phone;
+    std::string address;
+    std::string notes;
     bool gdprDeleted;
+    std::vector<std::string> favoriteProducts;
 
 public:
-    // Constructor
-    Customer(const string &name, const string &firstName, const string &email, const string &password,
-             const string &address, const string &notes);
-
-    // GDPR anonymize
-    void anonymize();
+    Customer(const std::string& name, const std::string& firstName,
+             const std::string& email, const std::string& password,
+             const std::string& phone, const std::string& address,
+             const std::string& notes = "");
 
     // Getters
-    string getName() const;
+    std::string getName() const;
+    std::string getFirstName() const;
+    std::string getPhone() const;
+    std::string getAddress() const;
+    std::string getNotes() const;
+    bool isGdprDeleted() const;
+    const std::vector<std::string>& getFavoriteProducts() const;
 
-    string getFirstName() const { return firstName;}
-
-    string getEmail() const;
-
-    string getAddress() const {return address;}
     // Setters
-    void setName(const string &name);
+    void setNotes(const std::string& notes);
 
-    void setEmail(const string &email);
+    // Favorite products management
+    void addFavoriteProduct(const std::string& productId);
+    void removeFavoriteProduct(const std::string& productId);
 
-    bool isGdprDeleted() const {return gdprDeleted;}
+    // GDPR anonymization
+    void anonymize(const std::string& customerId);
 
-    // Validation
-    static bool isValidEmail(const string &email);
+    // Update profile
+    void updateProfile(const std::string& name, const std::string& firstName,
+                      const std::string& phone, const std::string& address);
 };
 
-#endif // CUSTOMER_H
+#endif

@@ -1,12 +1,23 @@
-#ifndef STARTDATAB_H
-#define STARTDATAB_H
+#ifndef START_DATA_H
+#define START_DATA_H
 
-#include <vector>
-#include <string>
+#include "../repository/CustomerRepository.h"
+#include "../repository/EmployeeRepository.h"
+#include "../repository/ProductRepository.h"
+#include "../repository/OrderRepository.h"
 
-class StartDataB {
+class StartData {
 public:
-    static std::vector<std::pair<std::string, std::string>> getUsers();
+    static void initializeData(CustomerRepository& customerRepo,
+                              EmployeeRepository& employeeRepo,
+                              ProductRepository& productRepo,
+                              OrderRepository& orderRepo);
+
+private:
+    static void initCustomers(CustomerRepository& repo);
+    static void initEmployees(EmployeeRepository& repo);
+    static void initProducts(ProductRepository& repo);
+    static void initOrders(OrderRepository& repo);
 };
 
 #endif

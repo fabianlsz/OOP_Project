@@ -1,14 +1,10 @@
 #include "User.h"
 #include <regex>
 
-using namespace std;
+User::User(const std::string& email, const std::string& password, UserType userType)
+    : email(email), password(password), userType(userType), active(true) {}
 
-// constructor
-User::User(const string& email, const string& password, UserType userType)
-    : email(email), password(password), userType(userType) {}
-
-// getter
-string User::getEmail() const {
+std::string User::getEmail() const {
     return email;
 }
 
@@ -16,13 +12,23 @@ UserType User::getUserType() const {
     return userType;
 }
 
-//  autentificare
-bool User::authenticate(const string& email, const string& password) const {
-    return this->email == email && this->password == password;
+bool User::isActive() const {
+    return active;
 }
 
-// validarea pentru mail
-bool User::isValidEmail(const string& email) {
-    const regex emailRegex(R"((\w+)(\.{0,1})(\w*)@(\w+)\.(\w+))");
-    return regex_match(email, emailRegex);
+void User::setActive(bool active) {
+    this->active = active;
+}
+
+bool User::authenticate(const std::string& email, const std::string& password) const {
+    return this->email == email && this->password == password && active;
+}
+
+bool User::isValidEmail(const std::string& email) {
+    const std::regex emailRegex(R"(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)");
+    return std::regex_match(email, emailRegex);
+}
+
+void User::changePassword(const std::string& newPassword) {
+    password = newPassword;
 }

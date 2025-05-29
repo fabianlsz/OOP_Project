@@ -2,34 +2,33 @@
 #define USER_H
 
 #include <string>
-#include <vector>
-
-using namespace std;
 
 enum class UserType {
+    CUSTOMER,
     EMPLOYEE,
-    CUSTOMER
+    ADMIN
 };
 
 class User {
-private:
-    string email;
-    string password;
+protected:
+    std::string email;
+    std::string password;
     UserType userType;
+    bool active;
 
 public:
-    // Constructor
-    User(const string& email, const string& password, UserType userType);
+    User(const std::string& email, const std::string& password, UserType userType);
+    virtual ~User() = default;
 
-    // getter
-    string getEmail() const;
+    std::string getEmail() const;
     UserType getUserType() const;
+    bool isActive() const;
+    void setActive(bool active);
 
-    // auth
-    bool authenticate(const string& email, const string& password) const;
+    bool authenticate(const std::string& email, const std::string& password) const;
+    static bool isValidEmail(const std::string& email);
 
-    // validare
-    static bool isValidEmail(const string& email);
+    virtual void changePassword(const std::string& newPassword);
 };
 
-#endif // USER_H
+#endif

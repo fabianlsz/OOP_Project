@@ -1,27 +1,75 @@
 #include "Customer.h"
+#include <algorithm>
 
-// Constructor
-Customer::Customer(const string &name, const string &firstname, const string &email, const string &password,
-                   const string &address, const string &notes)
-    : User(email, password, UserType::CUSTOMER), firstName(firstname), name(name), email(email), password(password),
-      notes(notes), address(address) {
-}
+Customer::Customer(const std::string& name, const std::string& firstName,
+                   const std::string& email, const std::string& password,
+                   const std::string& phone, const std::string& address,
+                   const std::string& notes)
+    : User(email, password, UserType::CUSTOMER), name(name), firstName(firstName),
+      phone(phone), address(address), notes(notes), gdprDeleted(false) {}
 
-
-string Customer::getName() const {
+std::string Customer::getName() const {
     return name;
 }
 
-string Customer::getEmail() const {
-    return email;
+std::string Customer::getFirstName() const {
+    return firstName;
 }
 
-void Customer::anonymize() {
-    // TODO adapt this to the english fields
-    // c.name = "Kunde-" + email;
-    // c.vorname = "Unbekannt";
-    // c.email = "";
-    // c.adresse = "";
-    // c.bemerkungen = "";
-    // c.gdprDeleted = true;
+std::string Customer::getPhone() const {
+    return phone;
+}
+
+std::string Customer::getAddress() const {
+    return address;
+}
+
+std::string Customer::getNotes() const {
+    return notes;
+}
+
+bool Customer::isGdprDeleted() const {
+    return gdprDeleted;
+}
+
+const std::vector<std::string>& Customer::getFavoriteProducts() const {
+    return favoriteProducts;
+}
+
+void Customer::setNotes(const std::string& notes) {
+    this->notes = notes;
+}
+
+void Customer::addFavoriteProduct(const std::string& productId) {
+    if (std::find(favoriteProducts.begin(), favoriteProducts.end(), productId) == favoriteProducts.end()) {
+        favoriteProducts.push_back(productId);
+    }
+}
+
+void Customer::removeFavoriteProduct(const std::string& productId) {
+    favoriteProducts.erase(
+        std::remove(favoriteProducts.begin(), favoriteProducts.end(), productId),
+        favoriteProducts.end()
+    );
+}
+
+void Customer::anonymize(const std::string& customerId) {
+    name = "Kunde-" + customerId;
+    firstName = "Unbekannt";
+    email = "";
+    phone = "";
+    address = "";
+    notes = "";
+    gdprDeleted = true;
+    favoriteProducts.clear();
+}
+
+void Customer::updateProfile(const std::string& name, const std::string& firstName,
+                            const std::string& phone, const std::string& address) {
+    if (!gdprDeleted) {
+        this->name = name;
+        this->firstName = firstName;
+        this->phone = phone;
+        this->address = address;
+    }
 }
