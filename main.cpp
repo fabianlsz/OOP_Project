@@ -17,28 +17,9 @@ int main() {
     OrderService orderService(products, customers);
     AuthenticationController authController(customerRepo);
 
-    std::string email, password;
-    std::cout << "Enter email: ";
-    std::cin >> email;
-    std::cout << "Enter password: ";
-    std::cin >> password;
-
-    const User* user = authController.login(email, password);
-    if (!user) {
-        std::cout << "Invalid credentials!\n";
-        return 1;
-    }
-
-    std::cout << "Login successful!\n";
-    if (user->getUserType() == UserType::EMPLOYEE) {
-        EmployeeUI employeeUI(orderService, *user);
+    User mockuser{"a", "b", UserType::EMPLOYEE};
+        EmployeeUI employeeUI(orderService, mockuser);
         employeeUI.run();
-    } else if (user->getUserType() == UserType::CUSTOMER) {
-        CustomerUI customerUI(orderService, *user);
-        customerUI.showMenu();
-    } else {
-        std::cout << "Unknown user type.\n";
-    }
 
     return 0;
 }
